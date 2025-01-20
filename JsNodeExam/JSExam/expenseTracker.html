@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: antiquewhite;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        #div1, #div2{
+            background-color:white;
+            width: 800px;
+            height: 300px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 20px;
+            padding-left: 10px;
+            line-height: 10px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <h1>Expense Tracker</h1><br><br>
+        <label for="expType">Enter the type of expense :</label>
+        <select name="expType" id="expType">
+            <option value="electricity" id="electricity">Electricity bill</option>
+            <option value="Water" id="Water">Water Bill</option>
+            <option value="Food" id="food">Food Expenses</option>
+            <option value="hospital" id="hospital">Hospital Expenses</option>
+            <option value="others" id="others">Other Expenses</option>
+        </select><br><br>
+        <label for="expenseAmt">Amount : </label>
+        <input type="number" id="amount" placeholder="Enter the amount"><br><br>
+        <label for="month">Month : </label>
+        <select name="month" id="month">
+            <option value="jan" id="jan">January</option>
+            <option value="feb" id="feb">February</option>
+            <option value="March" id="mar">March</option>
+            <option value="april" id="april">April</option>
+            <option value="May" id="may">May</option>
+            <option value="june" id="june">June</option>
+            <option value="july" id="july">July</option>
+            <option value="aug" id="aug">August</option>
+            <option value="sept" id="sept">September</option>
+            <option value="oct" id="oct">October</option>
+            <option value="nov" id="nov">November</option>
+            <option value="dec" id="dec">December</option>
+        </select><br><br>
+        <button id="submitbtn" onsubmit='addExpense(expType,amt,Month)'>Submit</button>
+        <div id="expenseDetails"> </div>
+    </div>
+
+    <div id="div2">
+        <h2>Expense Details</h2>
+        <label for="month">Enter the month of Expense to show : </label>
+        <select name="month" id="month">
+            <option value="jan" id="jan">January</option>
+            <option value="feb" id="feb">February</option>
+            <option value="March" id="mar">March</option>
+            <option value="april" id="april">April</option>
+            <option value="May" id="may">May</option>
+            <option value="june" id="june">June</option>
+            <option value="july" id="july">July</option>
+            <option value="aug" id="aug">August</option>
+            <option value="sept" id="sept">September</option>
+            <option value="oct" id="oct">October</option>
+            <option value="nov" id="nov">November</option>
+            <option value="dec" id="dec">December</option>
+        </select><br><br>
+        <button id="showbtn" onsubmit='showExpenses(month)'>Show my Expenses</button>
+    </div>
+
+
+    <script>
+        const expenses=[];
+        const amounts =[];
+        const months=[];
+
+        let expType = document.getElementById('expType');
+        let amt = document.getElementById('amount');
+        let Month = document.getElementById('month');
+        let sbtn = document.getElementById('submitbtn');
+
+        function addExpense(expType,amt,Month){
+            if(!expenses || !amounts || !month){
+                alert("Alert a valid input in the fields");
+            }
+            else
+            {
+                expenses.push(expType);
+                amounts.push(amount);
+                months.push(Month);
+            }
+            console.log(amounts)
+            
+        }
+
+        function expDetails(months){
+            let month = document.getElementById('month')
+            switch(option){
+                case 'january':
+                    showExpenses();
+                    break;
+                case 'feburary':
+                    showExpenses();
+                    break;
+                case 'march':
+                    showExpenses();
+                    break;
+                case 'april':
+                    showExpenses();
+                    break;
+                case 'may':
+                    showExpenses();
+                    break;
+                case 'june':
+                    showExpenses();
+                    break;
+                case 'july':
+                    showExpenses();
+                    break;
+                case 'august':
+                    showExpenses();
+                    break;
+                case 'september':
+                    showExpenses();
+                    break;
+                case 'october':
+                    showExpenses();
+                    break;
+                case 'november':
+                    showExpenses();
+                    break;
+                case 'december':
+                    showExpenses();
+                    break;
+                default:
+                    document.write("Entered month is not valid.Please enter a valid month to show expenses.")
+                    break;
+            }
+        }
+
+
+        function showExpenses(month){
+            let display = document.getElementById('expenseDetails')
+            if(month === 'january'|| 'feburary' || 'march' ||'april'||'may'||'june' ||'july' ||'august'||'september' ||'october' || 'november'||'december') {
+                month.forEach(month => {
+                    let total=0
+                    total+=amount;
+                    let monthInput = document.getElementById('months');
+                    let display = document.innerHTML`
+                    <br><h2>Month Wise Expense of ${monthInput}</h2>
+                    <br><p>Expense Type : ${expType} Amount spend = ${amt}<br>Total Expense = ${total}</p>`;
+                });
+            }
+        }
+
+
+    </script>
+
+</body>
+</html>
